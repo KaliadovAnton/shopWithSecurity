@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <title>Cart</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="bootstrap.css"/>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="order">
+    <span>Dear <a th:text="${userName}"/>, your order: </span> <br/>
+    <table border="2">
+        <thead>
+        <tr>
+            <th>№</th>
+            <th>product</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+            <tr th:each="product, iterator : ${basket}" >
+                <td th:text="${iterator.count}"></td>
+                <td th:text="${product.name}"></td>
+                <td th:text="${product.price}"></td>
+            </tr>
+        <tr>
+            <td></td>
+            <td>TOTAL:</td>
+            <td th:text="${total}"></td>
+        </tr>
+    </table>
+</div>
+<br/>
+<span th:each="orderGood: ${orderGoods}">
+    <a th:text="${orderGood}"/>
+</span>
+
+</body>
+</html>

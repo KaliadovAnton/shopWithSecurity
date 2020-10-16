@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <title>Shop</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<form action="/cart" method="POST">
+    <a>Greetings,</a>
+    <span th:text="${userName}"></span> <br/>
+    <span th:unless="${#lists.isEmpty(cart)}">
+        <span>You have already chosen:</span>
+        <ol th:each="product,iterator : ${cart}">
+            <a th:text="${iterator.count}"></a>
+            <span th:text="${product}"></span>
+        </ol>
+    </span>
+    <span>Make your order: </span><br/>
+    <select name="currentSelect" size="2">
+        <option disabled>Select product</option>
+        <option th:each="product : ${productList}">
+            <a th:text="${product}"/>
+        </option>
+    </select><br/>
+    <input  name="userName" type="hidden" th:value="${userName}"/>
+    <input  name="cart" type="hidden" th:value="${cart}"/>
+    <button formaction="/shop">Add item</button>
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
