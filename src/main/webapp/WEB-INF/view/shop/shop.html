@@ -10,7 +10,7 @@
 <body>
 <form action="/cart" method="POST">
     <a>Greetings,</a>
-    <span th:text="${userName}"></span> <br/>
+    <span th:text="${username}"></span> <br/>
     <span th:unless="${#lists.isEmpty(cart)}">
         <span>You have already chosen:</span>
         <ol th:each="product,iterator : ${cart}">
@@ -25,7 +25,6 @@
             <a th:text="${product}"/>
         </option>
     </select><br/>
-    <input  name="userName" type="hidden" th:value="${userName}"/>
     <input  name="cart" type="hidden" th:value="${cart}"/>
     <button formaction="/shop">Add item</button>
     <button type="submit">Submit</button>

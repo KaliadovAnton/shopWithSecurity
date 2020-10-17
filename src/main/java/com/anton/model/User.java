@@ -10,28 +10,18 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private String name;
+    private String username;
     private String password;
 
-    public User(){
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", password='" + password + '\'' +
-                '}';
-    }
+    public User(){}
 
     public User(String name, String password){
-        this.name= name;
+        this.username= name;
         this.password = password;
     }
 
     public String getName() {
-        return name;
+        return username;
     }
 
     public String getPassword() {
@@ -40,5 +30,14 @@ public class User implements Serializable {
 
     public long getId() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

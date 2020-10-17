@@ -16,6 +16,7 @@ C:\Users\kaaba\IdeaProjects\shopwithmvc\src\main\java\com\anton\repository\Order
 C:\Users\kaaba\IdeaProjects\shopwithmvc\src\main\java\com\anton\util\DBInit.java
 C:\Users\kaaba\IdeaProjects\shopwithmvc\src\main\java\com\anton\controller\LoginController.java
 C:\Users\kaaba\IdeaProjects\shopwithmvc\src\main\java\com\anton\repository\UserRepo.java
+C:\Users\kaaba\IdeaProjects\shopwithmvc\src\main\java\com\anton\configuration\SecurityInit.java
 C:\Users\kaaba\IdeaProjects\shopwithmvc\src\main\java\com\anton\service\UserService.java
 C:\Users\kaaba\IdeaProjects\shopwithmvc\src\main\java\com\anton\configuration\AppInit.java
 C:\Users\kaaba\IdeaProjects\shopwithmvc\src\main\java\com\anton\model\OrderGood.java

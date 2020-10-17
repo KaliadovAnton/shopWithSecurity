@@ -15,6 +15,7 @@ com\anton\util\DBInit.class
 com\anton\model\Order.class
 com\anton\repository\GoodRepo.class
 com\anton\repository\GoodRepository.class
+com\anton\configuration\SecurityInit.class
 com\anton\service\GoodService.class
 com\anton\service\OrderGoodService.class
 com\anton\controller\CartController.class
