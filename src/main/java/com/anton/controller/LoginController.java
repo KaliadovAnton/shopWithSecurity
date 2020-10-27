@@ -7,6 +7,9 @@ import com.anton.repository.GoodRepo;
 import com.anton.repository.OrderGoodRepo;
 import com.anton.repository.OrderRepo;
 import com.anton.repository.UserRepo;
+import com.anton.service.GoodService;
+import com.anton.service.OrderGoodService;
+import com.anton.service.OrderService;
 import com.anton.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,27 +26,24 @@ import java.security.Principal;
 public class LoginController {
 
     @Autowired
-    private UserRepo userRepo;
-    @Autowired
-    private GoodRepo goodRepo;
-    @Autowired
-    private OrderRepo orderRepo;
-    @Autowired
-    private OrderGoodRepo orderGoodRepo;
-    @Autowired
     private UserService userService;
+    @Autowired
+    private GoodService goodService;
+    @Autowired
+    private OrderService orderService;
+
 
     @GetMapping("/")
     public String redirectToLogin(){
-        goodRepo.deleteAll();
-        goodRepo.save(new Good("Book", 1));
-        goodRepo.save(new Good("Newspaper", 1.1));
-        for(User user: userRepo.findAll()){
+        goodService.deleteAll();
+        goodService.save(new Good("Book", 1));
+        goodService.save(new Good("Newspaper", 1.1));
+        for(User user: userService.findAll()){
             return "welcome";
         }
         User newUser = new User("user", "user");
-        userRepo.save(newUser);
-        orderRepo.save(new Order(newUser.getId(), 0));
+        userService.save(newUser);
+        orderService.save(new Order(newUser.getId(), 0));
         return "welcome";
     }
     @GetMapping("/new")
@@ -57,15 +57,15 @@ public class LoginController {
             @RequestParam("password") String password,
             Model model){
         User newUser = new User(username, password);
-        userRepo.save(newUser);
-        orderRepo.save(new Order(newUser.getId(), 0));
+        userService.save(newUser);
+        orderService.save(new Order(newUser.getId(), 0));
         return "welcome";
     }
     @PostMapping("/login")
     public RedirectView registerUser(@RequestParam String username, @RequestParam String password, Model model){
         User user = new User(username, password);
-        userRepo.save(user);
-        orderRepo.save(new Order(user.getId(), 0));
+        userService.save(user);
+        orderService.save(new Order(user.getId(), 0));
         model.addAttribute("username", username);
         return new RedirectView("/shop");
     }

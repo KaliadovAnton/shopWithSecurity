@@ -1,20 +1,24 @@
 package com.anton.service;
 
-import com.anton.repository.OrderGoodRepository;
+import com.anton.repository.OrderGoodRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class OrderGoodService {
 
-    private final OrderGoodRepository orderGoodRepository;
+    private final OrderGoodRepo orderGoodRepo;
 
     @Autowired
-    public OrderGoodService(OrderGoodRepository orderGoodRepository) {
-        this.orderGoodRepository = orderGoodRepository;
+    public OrderGoodService(OrderGoodRepo orderGoodRepo) {
+
+        this.orderGoodRepo = orderGoodRepo;
     }
 
     public void save(int orderID, int productID) {
-    //    orderGoodRepository.save(orderID,productID);
+    }
+
+    public Object findAll() {
+        return orderGoodRepo.findAll();
     }
 }

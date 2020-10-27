@@ -9,7 +9,7 @@ public class OrderGood implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
     public OrderGood(){
 

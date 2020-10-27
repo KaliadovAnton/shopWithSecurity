@@ -3,6 +3,7 @@ package com.anton.controller;
 import com.anton.model.Good;
 import com.anton.repository.OrderGoodRepo;
 import com.anton.service.GoodService;
+import com.anton.service.OrderGoodService;
 import com.anton.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,11 +21,11 @@ public class CartController {
 
     @Autowired
     private GoodService goodService;
-    @Autowired
-    private OrderGoodRepo orderGoodRepo;
     private final ArrayList<Good> goodsInTheBasket = new ArrayList<>();
     @Autowired
     private OrderService orderService;
+    @Autowired
+    private OrderGoodService orderGoodService;
 
     @PostMapping
     public String showCart(
@@ -40,7 +41,7 @@ public class CartController {
         model.addAttribute("total", total);
         model.addAttribute("basket", goodsInTheBasket);
         model.addAttribute("username",principal.getName());
-        model.addAttribute("orderGoods",orderGoodRepo.findAll());
+        model.addAttribute("orderGoods",orderGoodService.findAll());
         return "cart/cart";
     }
 }

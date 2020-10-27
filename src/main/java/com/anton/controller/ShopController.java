@@ -25,26 +25,18 @@ public class ShopController {
     private GoodService goodService;
     private final ArrayList<Good> tempGoods = new ArrayList<>();
     @Autowired
-    private GoodRepo goodRepo;
-    @Autowired
     private OrderGoodRepo orderGoodRepo;
-    @Autowired
-    private OrderRepo orderRepo;
     @Autowired
     private UserService userService;
     @Autowired
     private OrderService orderService;
-    @Autowired
-    private UserRepo userRepo;
 
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
     public String addController(@RequestParam(name="currentSelect", required = false) String good,
                                 Principal principal,
                                 Model model){
         String name = principal.getName();
-        System.out.println(userRepo.findAll());
-        System.out.println(orderRepo.findAll());
-        if(model.getAttribute("cart")==null){
+        if(model.getAttribute("cart") == null){
             model.addAttribute("cart", tempGoods);
         }
         if(good!=null) {
@@ -52,7 +44,7 @@ public class ShopController {
             tempGoods.add(chosenGood);
             orderGoodRepo.save(new OrderGood(orderService.getOrderByUserName(name), chosenGood));
         }
-        model.addAttribute("productList",((ArrayList<Good>) goodRepo.findAll()));
+        model.addAttribute("productList",((ArrayList<Good>) goodService.findAll()));
         model.addAttribute("username", name);
         model.addAttribute("cart", tempGoods);
 

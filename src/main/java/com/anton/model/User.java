@@ -9,7 +9,7 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
     private String username;
     private String password;
 
@@ -28,7 +28,7 @@ public class User implements Serializable {
         return password;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

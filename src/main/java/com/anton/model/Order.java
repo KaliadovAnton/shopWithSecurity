@@ -10,7 +10,7 @@ public class Order implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private int id;
+    private Long id;
     @Column(name = "user_id")
     private long userId;
     @Column(name = "total")
@@ -31,11 +31,11 @@ public class Order implements Serializable {
         return userId;
     }
 
-    public void setId(int executeUpdate) {
+    public void setId(Long executeUpdate) {
         id=executeUpdate;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 

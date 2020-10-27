@@ -14,7 +14,7 @@ public class GoodService {
 
     private final GoodRepository goodRepository;
     @Autowired
-    GoodRepo goodRepo;
+    private GoodRepo goodRepo;
 
     @Autowired
     public GoodService(GoodRepository goodRepository) {
@@ -27,5 +27,17 @@ public class GoodService {
 
     public Good getProductByName(String productName) {
         return StreamSupport.stream(goodRepo.findAll().spliterator(),false).filter(good -> good.getName().equals(productName)).findFirst().get();
+    }
+
+    public Object findAll() {
+        return goodRepo.findAll();
+    }
+
+    public void deleteAll() {
+        goodRepo.deleteAll();
+    }
+
+    public void save(Good good) {
+        goodRepo.save(good);
     }
 }

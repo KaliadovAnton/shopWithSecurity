@@ -6,13 +6,11 @@ import java.io.Serializable;
 @Entity
 @Table(name="Goods")
 public class Good implements Serializable {
-    public int getId() {
-        return id;
-    }
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
     private String name;
     private double price;
 
@@ -31,6 +29,10 @@ public class Good implements Serializable {
 
     public double getPrice() {
         return price;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     @Override

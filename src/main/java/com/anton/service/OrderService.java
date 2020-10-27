@@ -22,4 +22,8 @@ public class OrderService {
     public Order getOrderByUserName(String name){
         return StreamSupport.stream(orderRepo.findAll().spliterator(),false).filter(order -> order.getUserID()==userService.getIdByName(name)).findAny().get();
     }
+
+    public void save(Order order) {
+        orderRepo.save(order);
+    }
 }
